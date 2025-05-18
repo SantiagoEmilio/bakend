@@ -6,15 +6,13 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 3000;
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// Conexión a la base de datos
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '12345678', // ← Cambia esto si tenés una contraseña
+  password: '12345678', 
   database: 'recuperacion'
 });
 
@@ -26,7 +24,7 @@ db.connect((err) => {
   }
 });
 
-// 👉 POST - Registrar datos del formulario
+// se registran los datos del formulario
 app.post('/registrar', (req, res) => {
   const { nombre, correo, mensaje } = req.body;
 
@@ -41,7 +39,7 @@ app.post('/registrar', (req, res) => {
   });
 });
 
-// 👉 GET - Obtener todos los usuarios
+// Obtener todos los usuarios
 app.get('/usuarios', (req, res) => {
   db.query('SELECT * FROM usuarios', (err, results) => {
     if (err) {
@@ -53,7 +51,7 @@ app.get('/usuarios', (req, res) => {
   });
 });
 
-// 👉 DELETE - Eliminar usuario por ID
+// SE Eliminan usuario por ID
 app.delete('/eliminar/:id', (req, res) => {
   const id = req.params.id;
   const sql = 'DELETE FROM usuarios WHERE id = ?';
