@@ -20,7 +20,7 @@ db.connect((err) => {
   if (err) {
     console.error('Error al conectar a MySQL:', err);
   } else {
-    console.log('Conectado a MySQL ✔️');
+    console.log('Conectado a MySQL ');
   }
 });
 
@@ -68,5 +68,5 @@ app.delete('/eliminar/:id', (req, res) => {
 
 // Iniciar servidor
 app.listen(PORT, () => {
-  console.log(`✅ Servidor escuchando en http://localhost:${PORT}`);
+  console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
